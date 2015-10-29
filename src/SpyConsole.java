@@ -4,27 +4,27 @@
 
 public class SpyConsole implements Console {
 
-    private boolean writeMessageWasCalled = false;
-    private boolean readMessageWasCalled  = false;
-    private String inputMessage;
+    private boolean wasReadMethodCalled = false;
+    private boolean wasWriteMethodCalled = false;
+    private String inputMessage = "";
     private String printedMessage;
 
     public String read() {
-        readMessageWasCalled = true;
+        wasReadMethodCalled = true;
         return inputMessage;
     }
 
-    public boolean readMessageWasCalled() {
-        return readMessageWasCalled;
+    public boolean readMethodWasCalled() {
+        return wasReadMethodCalled;
     }
 
     public void write(String message) {
-        writeMessageWasCalled = true;
+        wasWriteMethodCalled = true;
         printedMessage = message;
     }
 
-    public boolean writeMessageWasCalled() {
-        return writeMessageWasCalled;
+    public boolean writeMethodWasCalled() {
+        return wasWriteMethodCalled;
     }
 
     public void userInput(String message) {
