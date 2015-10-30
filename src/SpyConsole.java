@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by admin on 29/10/15.
  */
@@ -6,12 +9,16 @@ public class SpyConsole implements Console {
 
     private boolean wasReadMethodCalled = false;
     private boolean wasWriteMethodCalled = false;
-    private String inputMessage = "";
     private String printedMessage;
+
+    private List<String> inputMessages = new ArrayList<>();
 
     public String read() {
         wasReadMethodCalled = true;
-        return inputMessage;
+        if (inputMessages.size() == 0) {
+            return "";
+        }
+        return inputMessages.remove(0);
     }
 
     public boolean readMethodWasCalled() {
@@ -28,10 +35,14 @@ public class SpyConsole implements Console {
     }
 
     public void userInput(String message) {
-        inputMessage = message;
+        inputMessages.add(message);
     }
 
     public String printedMessage() {
         return printedMessage;
+    }
+
+    public void userInput(String[] messages) {
+        //inputMessages = messages;
     }
 }

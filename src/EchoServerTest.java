@@ -27,12 +27,6 @@ public class EchoServerTest {
     }
 
     @Test
-    public void readMethodWasCalled() {
-        echoServer.run();
-        assertThat(spyConsole.readMethodWasCalled(), is(true));
-    }
-
-    @Test
     public void writeMethodWasNotCalled() {
         assertThat(spyConsole.writeMethodWasCalled(), is(false));
     }
@@ -55,5 +49,13 @@ public class EchoServerTest {
         spyConsole.userInput("exit");
         echoServer.run();
         assertEquals(null, spyConsole.printedMessage());
+    }
+
+    @Ignore
+    @Test
+    public void printsMessagesUntilExit() {
+        spyConsole.userInput(new String[] {"hello", "exit"});
+        echoServer.run();
+        assertEquals("Hello", spyConsole.printedMessage());
     }
 }
