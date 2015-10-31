@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,10 +12,13 @@ public class SpyConsole implements Console {
     private boolean wasWriteMethodCalled = false;
     private List<String> inputMessages   = new ArrayList<>();
     private String printedMessage;
+    private int timesReadWasCalled       = 0;
 
 
     public String read() {
         wasReadMethodCalled = true;
+        timesReadWasCalled++;
+
         if (inputMessages.size() == 0) {
             return "";
         }
@@ -38,11 +42,15 @@ public class SpyConsole implements Console {
         inputMessages.add(message);
     }
 
+    public void userInput(String[] messages) {
+        inputMessages.addAll(Arrays.asList(messages));
+    }
+
     public String printedMessage() {
         return printedMessage;
     }
 
-    public void userInput(String[] messages) {
-        //inputMessages = messages;
+    public int timesReadWasCalled() {
+        return timesReadWasCalled;
     }
 }

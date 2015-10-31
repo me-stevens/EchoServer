@@ -51,11 +51,11 @@ public class EchoServerTest {
         assertEquals(null, spyConsole.printedMessage());
     }
 
-    @Ignore
     @Test
     public void printsMessagesUntilExit() {
         spyConsole.userInput(new String[] {"hello", "exit"});
         echoServer.run();
-        assertEquals("Hello", spyConsole.printedMessage());
+        assertEquals("hello", spyConsole.printedMessage());
+        assertEquals(2, spyConsole.timesReadWasCalled());
     }
 }
