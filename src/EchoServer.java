@@ -16,6 +16,7 @@ public class EchoServer {
 
         while ( message != null )  {
             message = console.read();
+
             if ( message.equals("exit") ) {
                 break;
             }

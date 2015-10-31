@@ -11,7 +11,7 @@ public class SpyConsole implements Console {
     private boolean wasReadMethodCalled  = false;
     private boolean wasWriteMethodCalled = false;
     private List<String> inputMessages   = new ArrayList<>();
-    private String printedMessage;
+    private String printedMessage        = "";
     private int timesReadWasCalled       = 0;
 
 
@@ -27,7 +27,7 @@ public class SpyConsole implements Console {
 
     public void write(String message) {
         wasWriteMethodCalled = true;
-        printedMessage = message;
+        printedMessage += message;
     }
 
     public boolean readMethodWasCalled() {
