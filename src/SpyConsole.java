@@ -38,10 +38,6 @@ public class SpyConsole implements Console {
         return wasWriteMethodCalled;
     }
 
-    public void userInput(String message) {
-        inputMessages.add(message);
-    }
-
     public void userInput(String[] messages) {
         inputMessages.addAll(Arrays.asList(messages));
     }

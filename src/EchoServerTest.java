@@ -32,21 +32,8 @@ public class EchoServerTest {
     }
 
     @Test
-    public void writeMethodWasCalled() {
-        echoServer.run();
-        assertThat(spyConsole.writeMethodWasCalled(), is(true));
-    }
-
-    @Test
-    public void theUserInputWasPrinted() {
-        spyConsole.userInput("Hello");
-        echoServer.run();
-        assertEquals("Hello", spyConsole.printedMessage());
-    }
-
-    @Test
     public void messageIsNotPrintedIfUserTypesExit() {
-        spyConsole.userInput("exit");
+        spyConsole.userInput(new String[] {"exit"});
         echoServer.run();
         assertEquals(null, spyConsole.printedMessage());
     }
