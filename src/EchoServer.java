@@ -12,13 +12,12 @@ public class EchoServer {
 
     public void run() {
 
+        console.write("Print something to echo (exit quits): ");
         String message = console.read();
 
         if ( !message.equals("exit") ) {
             console.write(message);
             run();
         }
-
     }
 }
-//
