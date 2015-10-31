@@ -3,7 +3,6 @@
  */
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -37,24 +36,32 @@ public class EchoServerTest {
     public void messageIsNotPrintedIfUserTypesExit() {
         spyConsole.userInput(new String[] {"exit"});
         echoServer.run();
-        assertEquals("", spyConsole.printedMessage());
+        assertEquals(promptmsg, spyConsole.printedMessage());
     }
 
     @Test
     public void printsMessageUntilExit() {
-        spyConsole.userInput(new String[] {"hello", "exit"});
+        String[] messages = new String[] {"hello", "exit"};
+        spyConsole.userInput(messages);
         echoServer.run();
-        String messages = promptmsg + "hello" + promptmsg;
-        assertEquals(messages, spyConsole.printedMessage());
+        assertEquals(printed(messages), spyConsole.printedMessage());
         assertEquals(2, spyConsole.timesReadWasCalled());
     }
 
     @Test
     public void printsMessagesUntilExit() {
-        spyConsole.userInput(new String[] {"hello", "goodbye", "exit"});
+        String[] messages = new String[] {"hello", "goodbye", "exit"};
+        spyConsole.userInput(messages);
         echoServer.run();
-        String messages = promptmsg + "hello" + promptmsg + "goodbye" + promptmsg;
-        assertEquals("hellogoodbye", spyConsole.printedMessage());
+        assertEquals(printed(messages), spyConsole.printedMessage());
         assertEquals(3, spyConsole.timesReadWasCalled());
+    }
+
+    private String printed(String[] messages) {
+        String output = promptmsg;
+        for (int i=0; i<messages.length-1; i++) {
+            output += messages[i] + promptmsg;
+        }
+        return output;
     }
 }
