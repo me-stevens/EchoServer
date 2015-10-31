@@ -12,19 +12,13 @@ public class EchoServer {
 
     public void run() {
 
-        String message = "";
+        String message = console.read();
 
-        while ( message != null )  {
-            message = console.read();
-
-            if ( message.equals("exit") ) {
-                break;
-            }
+        if ( !message.equals("exit") ) {
             console.write(message);
+            run();
         }
+
     }
 }
-
-
-
-//            console.write("Please enter message to echo:");
+//
