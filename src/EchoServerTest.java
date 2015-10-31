@@ -32,7 +32,7 @@ public class EchoServerTest {
     }
 
     @Test
-    public void writeMessageWasCalled() {
+    public void writeMethodWasCalled() {
         echoServer.run();
         assertThat(spyConsole.writeMethodWasCalled(), is(true));
     }

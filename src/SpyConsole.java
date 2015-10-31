@@ -7,11 +7,11 @@ import java.util.List;
 
 public class SpyConsole implements Console {
 
-    private boolean wasReadMethodCalled = false;
+    private boolean wasReadMethodCalled  = false;
     private boolean wasWriteMethodCalled = false;
+    private List<String> inputMessages   = new ArrayList<>();
     private String printedMessage;
 
-    private List<String> inputMessages = new ArrayList<>();
 
     public String read() {
         wasReadMethodCalled = true;
@@ -21,13 +21,13 @@ public class SpyConsole implements Console {
         return inputMessages.remove(0);
     }
 
-    public boolean readMethodWasCalled() {
-        return wasReadMethodCalled;
-    }
-
     public void write(String message) {
         wasWriteMethodCalled = true;
         printedMessage = message;
+    }
+
+    public boolean readMethodWasCalled() {
+        return wasReadMethodCalled;
     }
 
     public boolean writeMethodWasCalled() {
