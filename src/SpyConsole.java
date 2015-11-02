@@ -8,12 +8,10 @@ public class SpyConsole implements Console {
     private boolean wasWriteMethodCalled = false;
     private List<String> inputMessages   = new ArrayList<>();
     private String printedMessage        = "";
-    private int timesReadWasCalled       = 0;
 
 
     public String read() {
         wasReadMethodCalled = true;
-        timesReadWasCalled++;
 
         if (inputMessages.size() == 0) {
             return "";
@@ -43,9 +41,5 @@ public class SpyConsole implements Console {
 
     public String printedMessage() {
         return printedMessage;
-    }
-
-    public int timesReadWasCalled() {
-        return timesReadWasCalled;
     }
 }

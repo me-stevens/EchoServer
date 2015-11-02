@@ -24,8 +24,9 @@ public class EchoServerTest {
 
     @Test
     public void readMethodWasCalled() {
-        spyConsole.userInput(new String[] {"hi"});
-        echoServer.singleLoop("hi");
+        String message = "hi";
+        spyConsole.userInput(new String[] {message});
+        echoServer.singleLoop(message);
         assertThat(spyConsole.readMethodWasCalled(), is(true));
     }
 
@@ -39,28 +40,11 @@ public class EchoServerTest {
         assertFalse(echoServer.userTypedExit("hi"));
     }
 
-    }
-
     @Test
-    public void messageIsNotPrintedIfUserTypesExit() {
-        spyConsole.userInput(new String[] {"exit"});
-        echoServer.run();
-        assertEquals("", spyConsole.printedMessage());
-    }
-
-    @Test
-    public void printsMessageUntilExit() {
-        spyConsole.userInput(new String[] {"hello", "exit"});
-        echoServer.run();
-        assertEquals("hello", spyConsole.printedMessage());
-        assertEquals(2, spyConsole.timesReadWasCalled());
-    }
-
-    @Test
-    public void printsMessagesUntilExit() {
-        spyConsole.userInput(new String[] {"hello", "goodbye", "exit"});
-        echoServer.run();
-        assertEquals("hellogoodbye", spyConsole.printedMessage());
-        assertEquals(3, spyConsole.timesReadWasCalled());
+    public void userInputIsPrinted() {
+        String message = "hi";
+        spyConsole.userInput(new String[] {message});
+        echoServer.singleLoop(message);
+        assertEquals(message, spyConsole.printedMessage());
     }
 }
