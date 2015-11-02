@@ -1,7 +1,9 @@
-import com.sun.javafx.image.impl.BaseByteToIntConverter;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,12 +19,12 @@ public class EchoConsoleTest {
 
     @Test
     public void writeMethodWritesAString() {
-        ByteArrayOutputStream storeBytesHere = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(storeBytesHere);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(outputStream);
 
         EchoConsole echoConsole = new EchoConsole(null, out);
         echoConsole.write("Hello");
 
-        assertEquals("Hello\n", storeBytesHere.toString());
+        assertEquals("Hello\n", outputStream.toString());
     }
 }
