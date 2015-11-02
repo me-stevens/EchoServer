@@ -14,8 +14,7 @@ public class EchoConsole implements Console {
 
     @Override
     public String read() {
-        Scanner scanner = new Scanner(in);
-        return scanner.nextLine();
+        return new Scanner(in).nextLine();
     }
 
     @Override
