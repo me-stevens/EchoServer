@@ -8,24 +8,30 @@ public class EchoServer {
     }
 
     public static void main(String[] args) {
-
         EchoServer echoServer = new EchoServer(new EchoConsole(System.in, System.out));
         echoServer.run();
-
     }
 
     public void run() {
+        String message = "";
 
-        String message = getInput();
+        do {
+            setOutput(message);
+            message = getInput();
+        } while (!message.equals("exit"));
+    }
 
-        if ( !message.equals("exit") ) {
-            console.write(message);
-            run();
-        }
+    public String singleLoop(String lastMessage) {
+        setOutput(lastMessage);
+        return getInput();
+    }
+
+    private void setOutput(String message) {
+        console.write(message);
     }
 
     private String getInput() {
-        console.write(PROMPT);
+        setOutput(PROMPT);
         return console.read();
     }
 }

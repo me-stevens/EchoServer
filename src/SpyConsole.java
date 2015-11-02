@@ -18,6 +18,7 @@ public class SpyConsole implements Console {
         if (inputMessages.size() == 0) {
             return "";
         }
+
         return inputMessages.remove(0);
     }
 

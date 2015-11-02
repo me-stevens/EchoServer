@@ -2,8 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class EchoServerTest {
 
@@ -18,13 +17,18 @@ public class EchoServerTest {
     }
 
     @Test
-    public void readMethodWasNotCalled() {
-        assertThat(spyConsole.readMethodWasCalled(), is(false));
+    public void writeMethodWasCalled() {
+        echoServer.singleLoop("hi");
+        assertThat(spyConsole.writeMethodWasCalled(), is(true));
     }
 
     @Test
-    public void writeMethodWasNotCalled() {
-        assertThat(spyConsole.writeMethodWasCalled(), is(false));
+    public void readMethodWasCalled() {
+        spyConsole.userInput(new String[] {"hi"});
+        echoServer.singleLoop("hi");
+        assertThat(spyConsole.readMethodWasCalled(), is(true));
+    }
+
     }
 
     @Test
@@ -49,5 +53,4 @@ public class EchoServerTest {
         assertEquals("hellogoodbye", spyConsole.printedMessage());
         assertEquals(3, spyConsole.timesReadWasCalled());
     }
-
 }
