@@ -2,10 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by admin on 29/10/15.
- */
-
 public class SpyConsole implements Console {
 
     private boolean wasReadMethodCalled  = false;

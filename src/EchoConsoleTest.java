@@ -5,9 +5,6 @@ import java.io.*;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by admin on 29/10/15.
- */
 public class EchoConsoleTest {
 
     @Test

@@ -1,7 +1,3 @@
-/**
- * Created by admin on 29/10/15.
- */
-
 import org.junit.Before;
 import org.junit.Test;
 
