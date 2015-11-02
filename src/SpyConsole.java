@@ -6,18 +6,13 @@ public class SpyConsole implements Console {
 
     private boolean wasReadMethodCalled  = false;
     private boolean wasWriteMethodCalled = false;
-    private List<String> inputMessages   = new ArrayList<>();
+    private String inputMessage          = "";
     private String printedMessage        = "";
 
 
     public String read() {
         wasReadMethodCalled = true;
-
-        if (inputMessages.size() == 0) {
-            return "";
-        }
-
-        return inputMessages.remove(0);
+        return inputMessage;
     }
 
     public void write(String message) {
@@ -35,8 +30,8 @@ public class SpyConsole implements Console {
         return wasWriteMethodCalled;
     }
 
-    public void userInput(String[] messages) {
-        inputMessages.addAll(Arrays.asList(messages));
+    public void userInput(String message) {
+        inputMessage = message;
     }
 
     public String printedMessage() {

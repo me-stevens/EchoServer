@@ -25,7 +25,7 @@ public class EchoServerTest {
     @Test
     public void readMethodWasCalled() {
         String message = "hi";
-        spyConsole.userInput(new String[] {message});
+        spyConsole.userInput(message);
         echoServer.singleLoop(message);
         assertThat(spyConsole.readMethodWasCalled(), is(true));
     }
@@ -43,7 +43,7 @@ public class EchoServerTest {
     @Test
     public void userInputIsPrinted() {
         String message = "hi";
-        spyConsole.userInput(new String[] {message});
+        spyConsole.userInput(message);
         echoServer.singleLoop(message);
         assertEquals(message, spyConsole.printedMessage());
     }
