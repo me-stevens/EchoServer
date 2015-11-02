@@ -16,9 +16,8 @@ public class EchoServer {
         String message = "";
 
         do {
-            setOutput(message);
-            message = getInput();
-        } while (!message.equals("exit"));
+            message = singleLoop(message);
+        } while (!userTypedExit(message));
     }
 
     public String singleLoop(String lastMessage) {
@@ -33,5 +32,9 @@ public class EchoServer {
     private String getInput() {
         setOutput(PROMPT);
         return console.read();
+    }
+
+    boolean userTypedExit(String message) {
+        return message.equals("exit");
     }
 }

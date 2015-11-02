@@ -29,6 +29,16 @@ public class EchoServerTest {
         assertThat(spyConsole.readMethodWasCalled(), is(true));
     }
 
+    @Test
+    public void userExits() {
+        assertTrue(echoServer.userTypedExit("exit"));
+    }
+
+    @Test
+    public void userKeepsTyping() {
+        assertFalse(echoServer.userTypedExit("hi"));
+    }
+
     }
 
     @Test
