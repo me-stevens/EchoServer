@@ -9,13 +9,12 @@ public class EchoServerTest {
 
     private SpyConsole spyConsole;
     private EchoServer echoServer;
-    private String promptmsg;
+
 
     @Before
     public void setUp() throws Exception {
         spyConsole = new SpyConsole();
         echoServer = new EchoServer(spyConsole);
-        promptmsg  = "Print something to echo (exit quits): ";
     }
 
     @Test
@@ -32,32 +31,23 @@ public class EchoServerTest {
     public void messageIsNotPrintedIfUserTypesExit() {
         spyConsole.userInput(new String[] {"exit"});
         echoServer.run();
-        assertEquals(promptmsg, spyConsole.printedMessage());
+        assertEquals("", spyConsole.printedMessage());
     }
 
     @Test
     public void printsMessageUntilExit() {
-        String[] messages = new String[] {"hello", "exit"};
-        spyConsole.userInput(messages);
+        spyConsole.userInput(new String[] {"hello", "exit"});
         echoServer.run();
-        assertEquals(printed(messages), spyConsole.printedMessage());
+        assertEquals("hello", spyConsole.printedMessage());
         assertEquals(2, spyConsole.timesReadWasCalled());
     }
 
     @Test
     public void printsMessagesUntilExit() {
-        String[] messages = new String[] {"hello", "goodbye", "exit"};
-        spyConsole.userInput(messages);
+        spyConsole.userInput(new String[] {"hello", "goodbye", "exit"});
         echoServer.run();
-        assertEquals(printed(messages), spyConsole.printedMessage());
+        assertEquals("hellogoodbye", spyConsole.printedMessage());
         assertEquals(3, spyConsole.timesReadWasCalled());
     }
 
-    private String printed(String[] messages) {
-        String output = promptmsg;
-        for (int i=0; i<messages.length-1; i++) {
-            output += messages[i] + promptmsg;
-        }
-        return output;
-    }
 }

@@ -1,5 +1,6 @@
 public class EchoServer {
 
+    public static final String PROMPT = "Please print something to echo (exit quits): ";
     private Console console;
 
     public EchoServer(Console console) {
@@ -15,12 +16,16 @@ public class EchoServer {
 
     public void run() {
 
-        console.write("Print something to echo (exit quits): ");
-        String message = console.read();
+        String message = getInput();
 
         if ( !message.equals("exit") ) {
             console.write(message);
             run();
         }
+    }
+
+    private String getInput() {
+        console.write(PROMPT);
+        return console.read();
     }
 }

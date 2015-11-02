@@ -23,7 +23,9 @@ public class SpyConsole implements Console {
 
     public void write(String message) {
         wasWriteMethodCalled = true;
-        printedMessage += message;
+        if (!message.equals(EchoServer.PROMPT)) {
+            printedMessage += message;
+        }
     }
 
     public boolean readMethodWasCalled() {
