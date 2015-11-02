@@ -10,6 +10,13 @@ public class EchoServer {
         this.console = console;
     }
 
+    public static void main(String[] args) {
+
+        EchoServer echoServer = new EchoServer(new EchoConsole(System.in, System.out));
+        echoServer.run();
+
+    }
+
     public void run() {
 
         console.write("Print something to echo (exit quits): ");
