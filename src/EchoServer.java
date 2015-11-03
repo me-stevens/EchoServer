@@ -17,7 +17,7 @@ public class EchoServer {
 
         do {
             message = printUserInput();
-        } while (!userTypedExit(message));
+        } while (messageIsValid(message));
     }
 
     public String printUserInput() {
@@ -35,13 +35,13 @@ public class EchoServer {
         return console.read();
     }
 
-        if (!userTypedExit(message)) {
     public void printMessage(String message) {
+        if (messageIsValid(message)) {
             console.write(message);
         }
     }
 
-    private boolean userTypedExit(String message) {
-        return message.equals("exit");
+    private boolean messageIsValid(String message) {
+        return !message.equals("exit");
     }
 }
