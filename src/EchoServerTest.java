@@ -18,7 +18,7 @@ public class EchoServerTest {
     @Test
     public void userInputIsRead() {
         String message = "hi";
-        spyConsole.userInput(message);
+        spyConsole.setInput(message);
         assertEquals(message, echoServer.getInput());
         assertTrue(spyConsole.readMethodWasCalled());
     }
@@ -34,14 +34,14 @@ public class EchoServerTest {
     @Test
     public void userInputIsPrinted() {
         String message = "hi";
-        spyConsole.userInput(message);
+        spyConsole.setInput(message);
         echoServer.printUserInput();
         assertEquals(message, spyConsole.printedMessage());
     }
 
     @Test
     public void ifUserTypesExitNothingIsPrinted() {
-        spyConsole.userInput("exit");
+        spyConsole.setInput("exit");
         echoServer.printUserInput();
         assertEquals("", spyConsole.printedMessage());
     }

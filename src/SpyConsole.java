@@ -35,15 +35,16 @@ public class SpyConsole implements Console {
         return wasWriteMethodCalled;
     }
 
-    public void userInput(String message) {
+    public void setInput(String message) {
         inputMessages.add(message);
+    }
+
+    public void setInputs(String ... messages) {
+        inputMessages.addAll(Arrays.asList(messages));
     }
 
     public String printedMessage() {
         return printedMessage;
     }
 
-    public void userInputs(String[] messages) {
-        inputMessages.addAll(Arrays.asList(messages));
-    }
 }
