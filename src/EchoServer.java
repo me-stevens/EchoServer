@@ -22,7 +22,7 @@ public class EchoServer {
 
     public String printUserInput() {
         String message = promptForInput();
-        setOutput(message);
+        printMessage(message);
         return message;
     }
 
@@ -39,8 +39,8 @@ public class EchoServer {
         return getInput();
     }
 
-    public void setOutput(String message) {
         if (!userTypedExit(message)) {
+    public void printMessage(String message) {
             console.write(message);
         }
     }

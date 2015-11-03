@@ -26,7 +26,7 @@ public class EchoServerTest {
     @Test
     public void anyMessageIsPrinted() {
         String message = "hi";
-        echoServer.setOutput(message);
+        echoServer.printMessage(message);
         assertEquals(message, spyConsole.printedMessage());
         assertTrue(spyConsole.writeMethodWasCalled());
     }
