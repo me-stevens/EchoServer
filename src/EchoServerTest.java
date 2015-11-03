@@ -10,7 +10,7 @@ public class EchoServerTest {
     private EchoServer echoServer;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         spyConsole = new SpyConsole();
         echoServer = new EchoServer(spyConsole);
     }
