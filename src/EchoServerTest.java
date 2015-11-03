@@ -17,26 +17,23 @@ public class EchoServerTest {
 
     @Test
     public void userInputIsRead() {
-        String message = "hi";
-        spyConsole.setInput(message);
-        assertEquals(message, echoServer.getInput());
+        spyConsole.setInput("hi");
+        assertEquals("hi", echoServer.getInput());
         assertTrue(spyConsole.readMethodWasCalled());
     }
 
     @Test
     public void anyMessageIsPrinted() {
-        String message = "hi";
-        echoServer.printMessage(message);
-        assertEquals(message, spyConsole.printedMessage());
+        echoServer.printMessage("hi");
+        assertEquals("hi", spyConsole.printedMessage());
         assertTrue(spyConsole.writeMethodWasCalled());
     }
 
     @Test
     public void userInputIsPrinted() {
-        String message = "hi";
-        spyConsole.setInput(message);
+        spyConsole.setInput("hi");
         echoServer.printUserInput();
-        assertEquals(message, spyConsole.printedMessage());
+        assertEquals("hi", spyConsole.printedMessage());
     }
 
     @Test
