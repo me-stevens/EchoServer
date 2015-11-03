@@ -19,7 +19,7 @@ public class EchoServerTest {
     public void userInputIsRead() {
         String message = "hi";
         spyConsole.userInput(message);
-        assertEquals(message, echoServer.promptForInput());
+        assertEquals(message, echoServer.getInput());
         assertTrue(spyConsole.readMethodWasCalled());
     }
 
