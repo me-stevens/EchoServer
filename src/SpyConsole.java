@@ -6,17 +6,22 @@ public class SpyConsole implements Console {
 
     private boolean wasReadMethodCalled  = false;
     private boolean wasWriteMethodCalled = false;
-    private String inputMessage          = "";
+    private List<String> inputMessages   = new ArrayList<>();
     private String printedMessage        = "";
-
 
     public String read() {
         wasReadMethodCalled = true;
-        return inputMessage;
+
+        if (inputMessages.size() == 0) {
+            return "";
+        }
+
+        return inputMessages.remove(0);
     }
 
     public void write(String message) {
         wasWriteMethodCalled = true;
+
         if (!message.equals(EchoServer.PROMPT)) {
             printedMessage += message;
         }
@@ -31,10 +36,14 @@ public class SpyConsole implements Console {
     }
 
     public void userInput(String message) {
-        inputMessage = message;
+        inputMessages.add(message);
     }
 
     public String printedMessage() {
         return printedMessage;
+    }
+
+    public void userInputs(String[] messages) {
+        inputMessages.addAll(Arrays.asList(messages));
     }
 }
