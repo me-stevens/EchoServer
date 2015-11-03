@@ -1,8 +1,8 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class EchoServerTest {
 
@@ -45,7 +45,7 @@ public class EchoServerTest {
 
     @Test
     public void readsSeveralInputs() {
-        spyConsole.userInputs(new String[] {"hi", "bye", "exit"});
+        spyConsole.setInputs("hi", "bye", "exit");
         echoServer.run();
         assertEquals("hibye", spyConsole.printedMessage());
     }
